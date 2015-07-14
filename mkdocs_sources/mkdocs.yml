@@ -1,0 +1,23 @@
+site_name: PythonLandscape
+
+pages:
+- Home: index.md
+- Topics:
+    - Interpreters, JITs & Compilers: interpreters_jits_and_compilers.md
+    - Integrating with C/C++: integrating_c_and_cpp.md
+# - User interfaces: user_interfaces.md
+# - Profilers: profilers.md
+# - Debuggers: debuggers.md
+# - IDEs: ides.md 
+
+repo_url: https://github.com/pythonlandscape/pythonlandscape.github.io/
+
+google_analytics: ['UA-153541-12', 'www.pythonlandscape.org']
+
+site_dir: ../site
+
+theme_dir: custom_dir
+
+# site_favicon: favicon.ico
+
+# theme: readthedocs

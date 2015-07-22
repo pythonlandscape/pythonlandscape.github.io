@@ -2,24 +2,15 @@
 
 * CPython
 
-    - 
+    - The main implementation of Python. It's also interesting to note that the language semantics are mostly based on mimicking CPython for other languages. 
 
-    * Numba
+    * Curiosities:
     
-    
-* IronPython
+        - CPython has a [GIL (Global Interpreter Lock)](gil.md)
 
-* Jython
+* Numba
 
-* [PyPy](http://pypy.org/):
-
-    - PyPy is a Python interpreter with a builtin JIT which is able to grok Python code very well and run it fast.
-    - It can use [cffi](https://cffi.readthedocs.org/) to interface with C code.
-    
-
-* [MicroPyton](https://micropython.org/):
-
-    - Micro Python is an implementation of Python 3 optimized to run on a microcontroller.
+    - Numba is an LLVM based JIT for CPython. It's numpy-aware and especially suited for algorithmic code. 
 
 
 * [Cython](http://cython.org/): 
@@ -29,12 +20,29 @@
     - Can also be used as a way to create bindings for existing C/C++ libraries.
     - It's predecessor was Pyrex (which is no longer actively maintaned).
     - Supports Python 2.6 and 3.2 onwards.
+    
+* [MicroPyton](https://micropython.org/):
+
+    - Micro Python is an implementation of Python 3 optimized to run on a microcontroller.
 
 * [Nuitka](http://nuitka.net/):
 
     - Nuitka targets compiling Python code using the libpython library (thus giving a very compatible support for Python code).
     - As it uses libpython, much of its code is still interpreted (and development is going into providing more optimizations).
-    - Given its compliant nature, it can be used as a way for distributing Python code.
+    - Given its compliant nature, it can be used as a way for distributing Python code (as it's effectively a way to compile Python code).
+    
+* [PyPy](http://pypy.org/):
+
+    - PyPy is a Python interpreter with a builtin JIT which is able to grok Python code very well and make run it fast.
+    - It can use [cffi](https://cffi.readthedocs.org/) to interface with C code.
+    - It also has a [GIL (Global Interpreter Lock)](gil.md), but is working in a branch to create a GIL-less version using STM (Software Transactional Memory).
+    
+* [Stackless Python](http://www.stackless.com/):
+
+    - Stackless Python is a CPython fork which has its own stack which can do context-switching to provide micro-threads and continuations.
+    - Alternatives to Stackless Python exist as libraries: [greenlet](https://greenlet.readthedocs.org/) or [asyncio](https://docs.python.org/3/library/asyncio.html) can be used for that purpose.
+    
+
 
 Experimental (in development)
 ------------------------------- 
@@ -43,6 +51,14 @@ Experimental (in development)
 
     * Pyston is a Python implementation which has a builtin JIT (using LLVM). It's backed by Dropbox.
 
+Integration with other languages
+---------------------------------
+
+* Java: [Jython](http://www.jython.org)
+    
+* .NET: IronPython
+
+* JavaScript: [pyjs](http://pyjs.org/), [RapydScript](http://rapydscript.pyjeon.com/)
 
 Deprecated/Unsupported libraries
 ----------------------------------

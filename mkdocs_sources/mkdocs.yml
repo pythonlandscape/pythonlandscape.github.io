@@ -4,6 +4,7 @@ pages:
 - Home: index.md
 - Topics:
     - Interpreters, JITs & Compilers: interpreters_jits_and_compilers.md
+    - GIL (Global Interpreter Lock): gil.md
     - Integrating with C/C++: integrating_c_and_cpp.md
 # - User interfaces: user_interfaces.md
 # - Profilers: profilers.md

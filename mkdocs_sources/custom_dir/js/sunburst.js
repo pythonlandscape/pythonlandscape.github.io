@@ -133,11 +133,5 @@ var json = {"data": {"$type": "none"}, "children": [{"data": {"$angularWidth": 1
     //compute positions and plot.
     sb.refresh();
     //end
-    
-    
-//     window.addEventListener('resize', function(){
-//         sb.refresh();
-//         console.log('resize');
-//     }, true);
-    
+
 }

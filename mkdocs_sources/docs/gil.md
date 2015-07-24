@@ -3,7 +3,7 @@ GIL (Global Interpreter Lock)
 
 The GIL in CPython means that only one thread can be executing at a given time, meaning that it's usually fine using threads for I/O bound threads, but not for CPU bound threads (i.e.: things will not go faster with multiple threads).
 
-However, there are multiple solutions to that issue, which means it's usually not such a big issue (personally, I think that especially early on, Python succeeded not only because it's flexible with a nice syntax, but because the CPython impementation provided excellent interoperability with C):
+However, there are multiple solutions to that issue, which means it's usually not such a big issue (personally, I think that especially early on, Python succeeded not only because it's flexible with a nice syntax, but because the CPython implementation provided excellent interoperability with C):
 
 So, some solutions you can use:
 

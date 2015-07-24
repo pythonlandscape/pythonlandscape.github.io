@@ -1,6 +1,7 @@
+Main
+---------
 
-
-* CPython
+* [CPython](http://www.python.org)
 
     - The main implementation of Python. It's also interesting to note that the language semantics are mostly based on mimicking CPython for other languages. 
 
@@ -8,7 +9,7 @@
     
         - CPython has a [GIL (Global Interpreter Lock)](gil.md)
 
-* Numba
+* [Numba](http://numba.pydata.org/)
 
     - Numba is an LLVM based JIT for CPython. It's numpy-aware and especially suited for algorithmic code. 
 
@@ -54,11 +55,13 @@ Experimental (in development)
 Integration with other languages
 ---------------------------------
 
-* Java: [Jython](http://www.jython.org)
+* [Java: Jython](http://www.jython.org)
     
-* .NET: IronPython
+* [.NET: IronPython](http://ironpython.net)
 
-* JavaScript: [pyjs](http://pyjs.org/), [RapydScript](http://rapydscript.pyjeon.com/)
+* [JavaScript: pyjs](http://pyjs.org/)
+
+* [JavaScript: RapydScript](http://rapydscript.pyjeon.com/)
 
 Deprecated/Unsupported libraries
 ----------------------------------
@@ -66,16 +69,16 @@ Deprecated/Unsupported libraries
 Over the years, other technologies were also created (and many resemble the ones above, although they're no longer actively mantained). 
 
 
-* Psyco
+* [Psyco](http://psyco.sf.net)
 
     Psyco was an optimizing JIT for CPython (developed from 2006-2010 by Armin Rigo) which was later abandoned because it was increasingly harder to maintain given its approach.
     Also, its main developer went on to work on PyPy ;) 
     
-* Shedskin
+* [Shedskin](http://shed-skin.blogspot.com)
 
     Developed from 2008-2013 by Mark Dufour, it targeted translating pure (but implicitly typed) Python into C++.
 
-* Unladen Swallow
+* [Unladen Swallow](https://en.wikipedia.org/wiki/Unladen_Swallow)
 
     Back in 2009, Google sponsored a project which targeted integrating a JIT into CPython (using LLVM). 
     The project was later abandoned (although it had nice side effects, such as improving LLVM and providing a structure for performance tests).

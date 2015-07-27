@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+path {
+  stroke: #fff;
+  fill-rule: evenodd;
+}
+
+text {
+  font-family: Arial, sans-serif;
+  font-size: 12px;
+}
+
+</style>
+<body>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script type="text/javascript">
+
+var width = 960,height = 900;
+var radius = 400;
+
+var x = d3.scale.linear()
+    .range([0, 2 * Math.PI]);
+
+var y = d3.scale.linear()
+    .range([0, radius]);
+
+var color = d3.scale.category20c();
+
+var svg = d3.select("body")
+  .append("svg")
+    .attr("width", width)
+    .attr("height", height)
+  .append("g")
+    .attr("transform", "translate(" + width / 2 + "," + (height / 2 + 10) + ")");
+
+var partition = d3.layout.partition()
+    .value(function(d) { return d.size; });
+
+var arc = d3.svg.arc()
+    .startAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x))); })
+    .endAngle(function(d) { return Math.max(0, Math.min(2 * Math.PI, x(d.x + d.dx))); })
+    .innerRadius(function(d) { return Math.max(0, y(d.y)); })
+    .outerRadius(function(d) { return Math.max(0, y(d.y + d.dy)); });
+
+    //start json
+var json = {"data": {"$type": "none"}, "children": [{"id": 20, "data": {"description": "Interpreters, JITs & Compilers", "$color": "#A1D99B"}, "children": [{"id": 1, "data": {"description": "Main", "$color": "#756BB1"}, "children": [{"id": 2, "data": {"html": "<li>\n<p><a href=\"http://www.python.org\">CPython</a></p>\n<ul>\n<li>\n<p>The main implementation of Python. It's also interesting to note that the language semantics are mostly based on mimicking CPython for other languages. </p>\n</li>\n<li>\n<p>Curiosities:</p>\n<ul>\n<li>CPython has a <a href=\"gil.md\">GIL (Global Interpreter Lock)</a></li>\n</ul>\n</li>\n</ul>\n</li>\n", "description": "CPython", "$color": "#BCBDDC"}, "children": [], "name": "CPython", "size": 10}, {"id": 3, "data": {"html": "<li>\n<p><a href=\"http://numba.pydata.org/\">Numba</a></p>\n<ul>\n<li>Numba is an LLVM based JIT for CPython. It's numpy-aware and especially suited for algorithmic code. </li>\n</ul>\n</li>\n", "description": "Numba", "$color": "#DADAEB"}, "children": [], "name": "Numba", "size": 10}, {"id": 4, "data": {"html": "<li>\n<p><a href=\"http://cython.org/\">Cython</a>: </p>\n<ul>\n<li>A static compiler targeting CPython (with initial support for PyPy).</li>\n<li>Can compile Python code and mixed Cython/C/C++ code.</li>\n<li>Can also be used as a way to create bindings for existing C/C++ libraries.</li>\n<li>It's predecessor was Pyrex (which is no longer actively maintaned).</li>\n<li>Supports Python 2.6 and 3.2 onwards.</li>\n</ul>\n</li>\n", "description": "Cython", "$color": "#D9D9D9"}, "children": [], "name": "Cython", "size": 10}, {"id": 5, "data": {"html": "<li>\n<p><a href=\"https://micropython.org/\">MicroPyton</a>:</p>\n<ul>\n<li>Micro Python is an implementation of Python 3 optimized to run on a microcontroller.</li>\n</ul>\n</li>\n", "description": "MicroPyton", "$color": "#C6DBEF"}, "children": [], "name": "MicroPyton", "size": 10}, {"id": 6, "data": {"html": "<li>\n<p><a href=\"http://nuitka.net/\">Nuitka</a>:</p>\n<ul>\n<li>Nuitka targets compiling Python code using the libpython library (thus giving a very compatible support for Python code).</li>\n<li>As it uses libpython, much of its code is still interpreted (and development is going into providing more optimizations).</li>\n<li>Given its compliant nature, it can be used as a way for distributing Python code (as it's effectively a way to compile Python code).</li>\n</ul>\n</li>\n", "description": "Nuitka", "$color": "#6BAED6"}, "children": [], "name": "Nuitka", "size": 10}, {"id": 7, "data": {"html": "<li>\n<p><a href=\"http://pypy.org/\">PyPy</a>:</p>\n<ul>\n<li>PyPy is a Python interpreter with a builtin JIT which is able to grok Python code very well and make run it fast.</li>\n<li>It can use <a href=\"https://cffi.readthedocs.org/\">cffi</a> to interface with C code.</li>\n<li>It also has a <a href=\"gil.md\">GIL (Global Interpreter Lock)</a>, but is working in a branch to create a GIL-less version using STM (Software Transactional Memory).</li>\n</ul>\n</li>\n", "description": "PyPy", "$color": "#6BAED6"}, "children": [], "name": "PyPy", "size": 10}, {"id": 8, "data": {"html": "<li>\n<p><a href=\"http://www.stackless.com/\">Stackless Python</a>:</p>\n<ul>\n<li>Stackless Python is a CPython fork which has its own stack which can do context-switching to provide micro-threads and continuations.</li>\n<li>Alternatives to Stackless Python exist as libraries: <a href=\"https://greenlet.readthedocs.org/\">greenlet</a> or <a href=\"https://docs.python.org/3/library/asyncio.html\">asyncio</a> can be used for that purpose.</li>\n</ul>\n</li>\n", "description": "Stackless Python", "$color": "#FDD0A2"}, "children": [], "name": "Stackless Python", "size": 10}], "name": "Main", "size": 10}, {"id": 9, "data": {"description": "Experimental (in development)", "$color": "#A1D99B"}, "children": [{"id": 10, "data": {"html": "<li>\n<p><a href=\"https://github.com/dropbox/pyston\">Pyston</a>:</p>\n<ul>\n<li>Pyston is a Python implementation which has a builtin JIT (using LLVM). It's backed by Dropbox.</li>\n</ul>\n</li>\n", "description": "Pyston", "$color": "#74C476"}, "children": [], "name": "Pyston", "size": 10}], "name": "Experimental (in development)", "size": 10}, {"id": 11, "data": {"description": "Integration with other languages", "$color": "#FDAE6B"}, "children": [{"id": 12, "data": {"html": "<li>\n<p><a href=\"http://www.jython.org\">Java: Jython</a></p>\n</li>\n", "description": "Java: Jython", "$color": "#756BB1"}, "children": [], "name": "Java: Jython", "size": 10}, {"id": 13, "data": {"html": "<li>\n<p><a href=\"http://ironpython.net\">.NET: IronPython</a></p>\n</li>\n", "description": ".NET: IronPython", "$color": "#BCBDDC"}, "children": [], "name": ".NET: IronPython", "size": 10}, {"id": 14, "data": {"html": "<li>\n<p><a href=\"http://pyjs.org/\">JavaScript: pyjs</a></p>\n</li>\n", "description": "JavaScript: pyjs", "$color": "#DADAEB"}, "children": [], "name": "JavaScript: pyjs", "size": 10}, {"id": 15, "data": {"html": "<li>\n<p><a href=\"http://rapydscript.pyjeon.com/\">JavaScript: RapydScript</a></p>\n</li>\n", "description": "JavaScript: RapydScript", "$color": "#D9D9D9"}, "children": [], "name": "JavaScript: RapydScript", "size": 10}], "name": "Integration with other languages", "size": 10}, {"id": 16, "data": {"description": "Deprecated/Unsupported libraries", "$color": "#C6DBEF"}, "children": [{"id": 17, "data": {"html": "<li>\n<p><a href=\"http://psyco.sf.net\">Psyco</a></p>\n<p>Psyco was an optimizing JIT for CPython (developed from 2006-2010 by Armin Rigo) which was later abandoned because it was increasingly harder to maintain given its approach.\nAlso, its main developer went on to work on PyPy ;) </p>\n</li>\n", "description": "Psyco", "$color": "#6BAED6"}, "children": [], "name": "Psyco", "size": 10}, {"id": 18, "data": {"html": "<li>\n<p><a href=\"http://shed-skin.blogspot.com\">Shedskin</a></p>\n<p>Developed from 2008-2013 by Mark Dufour, it targeted translating pure (but implicitly typed) Python into C++.</p>\n</li>\n", "description": "Shedskin", "$color": "#6BAED6"}, "children": [], "name": "Shedskin", "size": 10}, {"id": 19, "data": {"html": "<li>\n<p><a href=\"https://en.wikipedia.org/wiki/Unladen_Swallow\">Unladen Swallow</a></p>\n<p>Back in 2009, Google sponsored a project which targeted integrating a JIT into CPython (using LLVM). \nThe project was later abandoned (although it had nice side effects, such as improving LLVM and providing a structure for performance tests).</p>\n</li>\n", "description": "Unladen Swallow", "$color": "#FDD0A2"}, "children": [], "name": "Unladen Swallow", "size": 10}], "name": "Deprecated/Unsupported libraries", "size": 10}], "name": "Interpreters, JITs & Compilers", "size": 10}, {"id": 21, "data": {"description": "Integrating with C/C++", "$color": "#74C476"}, "children": [], "name": "Integrating with C/C++", "size": 10}, {"id": 22, "data": {"description": "GIL (Global Interpreter Lock)", "$color": "#FDAE6B"}, "children": [], "name": "GIL (Global Interpreter Lock)", "size": 10}], "name": "", "id": 0} 
+    //end json
+
+
+var g = svg.selectAll("g")
+    .data(partition.nodes(json))
+  .enter().append("g");
+
+var path = g.append("path")
+  .attr("d", arc)
+  .style("fill", function(d) { return color((d.children ? d : d.parent).name); })
+  .on("click", click);
+
+var text = g.append("text")
+  .attr("transform", function(d) { return "rotate(" + computeTextRotation(d) + ")"; })
+  .attr("x", function(d) { return y(d.y); })
+  .attr("dx", "6") // margin
+  .attr("dy", ".35em") // vertical-align
+  .text(function(d) { return d.name; });
+
+function click(d) {
+  // fade out all text elements
+  text.transition().attr("opacity", 0);
+    console.log("initial", d.name);
+
+  var foundInitial = false;
+  path.transition()
+    .duration(750)
+    .attrTween("d", arcTween(d))
+    .each("end", function(e, i) {
+        if(!foundInitial){
+            foundInitial = e.name === d.name;
+            if(!foundInitial){
+                return;
+            }
+        }
+        // check if the animated element's data e lies within the visible angle span given in d
+        if (e.x >= d.x && e.x < (d.x + d.dx)) {
+          // get a selection of the associated text element
+          var arcText = d3.select(this.parentNode).select("text");
+          console.log(e.x + " " + d.x + " " + d.dx + " " + e.name);  
+          // fade in the text element and recalculate positions
+          arcText.transition().duration(750)
+            .attr("opacity", 1)
+            .attr("transform", function() { return "rotate(" + computeTextRotation(e) + ")" })
+            .attr("x", function(d) { return y(d.y); });
+        }
+    });
+}
+
+d3.select(self.frameElement).style("height", height + "px");
+
+// Interpolate the scales!
+function arcTween(d) {
+  var xd = d3.interpolate(x.domain(), [d.x, d.x + d.dx]),
+      yd = d3.interpolate(y.domain(), [d.y, 1]),
+      yr = d3.interpolate(y.range(), [d.y ? 20 : 0, radius]);
+  return function(d, i) {
+    return i
+        ? function(t) { return arc(d); }
+        : function(t) { x.domain(xd(t)); y.domain(yd(t)).range(yr(t)); return arc(d); };
+  };
+}
+
+function computeTextRotation(d) {
+  return (x(d.x + d.dx / 2) - Math.PI / 2) / Math.PI * 180;
+}
+
+</script>

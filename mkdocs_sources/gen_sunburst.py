@@ -80,6 +80,7 @@ def load_interpreters_jits_and_compilers(curdir, root):
                     "$color": next_color(),
                     "$angularWidth": 1,
                 },
+                "size": 10,
                 "id": next_id(),
                 "name": r.text
             })
@@ -101,6 +102,7 @@ def load_interpreters_jits_and_compilers(curdir, root):
                                             "$angularWidth": 1,
                                             "html": html
                                         },
+                                        "size": 10,
                                         "id": next_id(),
                                         "name": l4.text
                                     })
@@ -114,6 +116,7 @@ def load_interpreters_jits_and_compilers(curdir, root):
             "$color": next_color(),
             "$angularWidth": 1,
         },
+        "size": 10,
         "id": next_id(),
         "name": "Interpreters, JITs & Compilers"
     })
@@ -129,6 +132,7 @@ def load_integrating_c_and_cpp(curdir, root):
             "$color": next_color(),
             "$angularWidth": 1,
         },
+        "size": 10,
         "id": next_id(),
         "name": "Integrating with C/C++"
     })
@@ -143,6 +147,7 @@ def load_gil(curdir, root):
             "$color": next_color(),
             "$angularWidth": 1,
         },
+        "size": 10,
         "id": next_id(),
         "name": "GIL (Global Interpreter Lock)"
     })

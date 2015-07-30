@@ -63,7 +63,6 @@ def replace_sunburst_js(curdir, repl):
     open(target, 'w').write(contents)
     
     
-    
 def compute_children(contents):
     children = []
     tree = handle_markdown(contents)
@@ -106,16 +105,14 @@ def compute_children(contents):
                                         "id": next_id(),
                                         "name": l4.text
                                     })
-        return children
+    return children
 
 def load_interpreters_jits_and_compilers(curdir, root):
     contents = open(os.path.join(curdir, 'docs', 'interpreters_jits_and_compilers.md'), 'r').read()
     
-    children = compute_children(contents)
-
     
     root['children'].append({
-        'children': children,
+        'children': compute_children(contents),
         "data": {
             "description": "Interpreters, JITs & Compilers",
             "$color": next_color(),
@@ -129,9 +126,8 @@ def load_interpreters_jits_and_compilers(curdir, root):
     
 def load_integrating_c_and_cpp(curdir, root):
     contents = open(os.path.join(curdir, 'docs', 'integrating_c_and_cpp.md'), 'r').read()
-    children = []
     root['children'].append({
-        'children': children,
+        'children': compute_children(contents),
         "data": {
             "description": "Integrating with C/C++",
             "$color": next_color(),
@@ -144,9 +140,8 @@ def load_integrating_c_and_cpp(curdir, root):
     
 def load_gil(curdir, root):
     contents = open(os.path.join(curdir, 'docs', 'gil.md'), 'r').read()
-    children = []
     root['children'].append({
-        'children': children,
+        'children': compute_children(contents),
         "data": {
             "description": "GIL (Global Interpreter Lock)",
             "$color": next_color(),

@@ -62,9 +62,9 @@ def replace_sunburst_js(curdir, repl):
     
     open(target, 'w').write(contents)
     
-def load_interpreters_jits_and_compilers(curdir, root):
-    contents = open(os.path.join(curdir, 'docs', 'interpreters_jits_and_compilers.md'), 'r').read()
     
+    
+def compute_children(contents):
     children = []
     tree = handle_markdown(contents)
     
@@ -106,7 +106,12 @@ def load_interpreters_jits_and_compilers(curdir, root):
                                         "id": next_id(),
                                         "name": l4.text
                                     })
-                                    
+        return children
+
+def load_interpreters_jits_and_compilers(curdir, root):
+    contents = open(os.path.join(curdir, 'docs', 'interpreters_jits_and_compilers.md'), 'r').read()
+    
+    children = compute_children(contents)
 
     
     root['children'].append({

@@ -19,7 +19,6 @@ Main
     - A static compiler targeting CPython (with initial support for PyPy).
     - Can compile Python code and mixed Cython/C/C++ code.
     - Can also be used as a way to create bindings for existing C/C++ libraries.
-    - It's predecessor was Pyrex (which is no longer actively maintaned).
     - Supports Python 2.6 and 3.2 onwards.
     
 * [MicroPyton](https://micropython.org/):
